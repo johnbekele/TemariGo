@@ -6,7 +6,6 @@ import Home from '../tabs/Home';
 import Profile from '../tabs/Profile';
 import Settings from '../tabs/Settings';
 
-const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
@@ -24,8 +23,7 @@ export default function TabNavigator() {
           }
           return <MaterialIcons name={iconName} size={size} color={color} />;
         },
-      })}
-    >
+      })}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Settings" component={Settings} />
