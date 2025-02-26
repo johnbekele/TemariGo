@@ -89,7 +89,6 @@ export default function LoginScreen({ navigation }) {
             onChangeText={(text) => setPassword({ value: text, error: '' })}
             error={!!password.error}
             errorText={password.error}
-            secureTextEntry
             type="password"
           />
           <View className="-mt-4 w-full flex-row-reverse">

@@ -5,10 +5,10 @@ import Octicons from 'react-native-vector-icons/Octicons';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { Ionicons } from 'react-native-vector-icons';
 
-export default function Inpute({ errorText, type, description, ...props }) {
+export default function Input({ errorText, type, description, ...props }) {
   const [icon, setIcon] = useState();
   const [placeholder, setplaceholder] = useState();
-  const [isSecure, setIsSecure] = useState(true);
+  const [isSecure, setIsSecure] = useState(false);
 
   const togglePasswordVisibility = () => {
     setIsSecure(!isSecure); // Toggle password visibility
@@ -18,12 +18,15 @@ export default function Inpute({ errorText, type, description, ...props }) {
     if (type === 'password') {
       setIcon('lock');
       setplaceholder('Password');
+      setIsSecure(true);
     } else if (type === 'email') {
       setIcon('mail');
       setplaceholder('Email');
+      setIsSecure(false);
     } else if (type === 'username') {
       setIcon('person');
       setplaceholder('Username');
+      setIsSecure(false);
     }
   }, [type]);
   return (
@@ -34,7 +37,7 @@ export default function Inpute({ errorText, type, description, ...props }) {
       <TextInput
         className="flex-1 font-semibold text-neutral-700"
         placeholder={placeholder}
-        secureTextEntry={type === 'password' ? isSecure : false}
+        secureTextEntry={isSecure}
         {...props}
       />
       {type === 'password' && ( // Only show the eye icon for password fields
