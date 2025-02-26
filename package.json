@@ -13,11 +13,13 @@
   "dependencies": {
     "@expo-google-fonts/great-vibes": "^0.2.3",
     "@expo/vector-icons": "^14.0.4",
+    "@react-native-async-storage/async-storage": "1.23.1",
     "@react-navigation/native-stack": "^7.2.0",
     "@react-navigation/stack": "^7.1.1",
     "expo": "^52.0.37",
     "expo-font": "~13.0.4",
     "expo-status-bar": "~2.0.1",
+    "firebase": "^11.3.1",
     "i": "^0.3.7",
     "lottie-react-native": "^7.2.2",
     "nativewind": "latest",

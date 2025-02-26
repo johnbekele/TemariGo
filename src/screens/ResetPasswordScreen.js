@@ -1,4 +1,4 @@
-import { View, Text, StatusBar } from 'react-native';
+import { View, Text, StatusBar, Alert } from 'react-native';
 import React, { useState } from 'react';
 import Logo from '~/components/Logo';
 import Input from '~/components/Input';
@@ -8,34 +8,60 @@ import TextButton from '~/components/TextButton';
 import Background from '~/components/Background';
 import { emailValidator } from '~/helpers/emailValidator';
 import AnimatedLock from '~/components/AnimatedLock';
+import { useAuth } from '~/context/useAuth';
 
 export default function ResetPasswordScreen({ navigation }) {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [message, setMessage] = useState(false);
   const [isDone, setIsDone] = useState(false);
+  const { resetPassword } = useAuth(); // Changed from handleResetPassword to resetPassword
 
-  const onResetPressed = () => {
+  const onResetPressed = async () => {
     const emailError = emailValidator(email.value);
 
+    console.log('Reset email:', email.value);
+    console.log('Email Error:', emailError);
+
     if (emailError) {
-      setEmail((prevState) => ({ ...prevState, error: emailError }));
-      return; // Return early if there are errors
+      setEmail((prev) => ({ ...prev, error: emailError }));
+      return;
     }
-    setMessage(true);
-    setIsDone(true); // Hide lock and show message
+
+    try {
+      await resetPassword(email.value.trim());
+      setMessage(true);
+      setIsDone(true);
+      console.log('Reset link sent successfully');
+    } catch (error) {
+      console.error('Reset failed:', error.message);
+      let errorMessage = 'Failed to send reset link.';
+      switch (error.code) {
+        case 'auth/invalid-email':
+          errorMessage = 'Please enter a valid email address.';
+          break;
+        case 'auth/user-not-found':
+          errorMessage = 'No account found with this email.';
+          break;
+        case 'auth/too-many-requests':
+          errorMessage = 'Too many requests. Try again later.';
+          break;
+        default:
+          errorMessage = error.message;
+      }
+      Alert.alert('Error', errorMessage);
+    }
   };
+
   return (
     <Background>
       <View className="flex-1">
         <StatusBar style="dark" />
-
         <View className="flex-1 items-center gap-6 px-6">
           {isDone ? <AnimatedLock /> : <Logo />}
-
           <HeadingText text="Reset Password" />
           <Input
             label="Email"
-            returnKeyType="next"
+            returnKeyType="done" // Changed to "done" since it's the only field
             value={email.value}
             onChangeText={(text) => setEmail({ value: text, error: '' })}
             error={!!email.error}
@@ -47,29 +73,31 @@ export default function ResetPasswordScreen({ navigation }) {
             type="email"
           />
           {message && (
-            <View className="mt-4 flex-row">
-              <Text>Reset link has been sent to your email. </Text>
+            <View className="-mt-4 flex-row flex-wrap justify-center">
+              <Text>Reset link sent to your email. </Text>
               <TextButton
-                className="font-semiborder-l-red-300 ml-1 pr-4 font-semibold text-blue-600 underline"
-                title="Log in "
+                className="font-semibold text-blue-600 underline"
+                title="Log in"
                 onPress={() => {
-                  console.log('log in pressed');
+                  console.log('Log in pressed');
                   navigation.navigate('Login');
                 }}
               />
             </View>
           )}
-
-          <Button display={isDone ? 'none' : 'flex'} onPress={onResetPressed} mode="outlined">
+          <Button
+            style={{ display: isDone ? 'none' : 'flex' }} // Fixed display prop
+            onPress={onResetPressed}
+            mode="outlined">
             Reset Password
           </Button>
-          <View display={isDone ? 'none' : 'flex'} className="mt-4 flex-row">
+          <View style={{ display: isDone ? 'none' : 'flex' }} className="-mt-4 flex-row">
             <Text>Remember your password? </Text>
             <TextButton
-              className="font-semiborder-l-red-300 pr-4"
+              className="font-semibold text-blue-600 underline"
               title="Sign in"
               onPress={() => {
-                console.log('log in pressed');
+                console.log('Log in pressed');
                 navigation.navigate('Login');
               }}
             />

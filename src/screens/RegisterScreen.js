@@ -1,5 +1,5 @@
-import { View, Text, StatusBar } from 'react-native';
-import React, { useState } from 'react';
+import { View, Text, StatusBar, Alert } from 'react-native';
+import React, { useState, useContext } from 'react';
 import Logo from '~/components/Logo';
 import Input from '~/components/Input';
 import HeadingText from '~/components/HeadingText';
@@ -10,28 +10,27 @@ import { emailValidator } from '~/helpers/emailValidator';
 import { passwordValidator } from '~/helpers/passwordValidator';
 import { nameValidator } from '~/helpers/nameValidator';
 import AnimatedLoding from '~/components/AnimatedLoading';
+import { AuthContext } from '~/context/AuthContext';
 
 export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState({ value: '', error: '' });
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
   const [isLoading, setIsLoading] = useState(false);
+  const { signUp } = useContext(AuthContext);
 
-  const onSignUpPressed = () => {
+  const onSignUpPressed = async () => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
     const nameError = nameValidator(username.value);
-
-    setIsLoading(true); // Show loading animation
-    setTimeout(() => {
-      setIsLoading(false); // Hide loading animation after 2 seconds
-    }, 2000);
 
     // Debugging the values to see if the validation functions are working
     console.log('Username:', username.value, 'Email:', email.value, 'Password:', password.value);
     console.log('Username Error:', nameError);
     console.log('Email Error:', emailError);
     console.log('Password Error:', passwordError);
+
+    console.log('Email validation result:', emailValidator(email.value));
 
     if (emailError || passwordError || nameError) {
       setUsername((prevState) => ({ ...prevState, error: nameError }));
@@ -40,7 +39,18 @@ export default function RegisterScreen({ navigation }) {
       return; // Return early if there are errors
     }
 
-    navigation.navigate('Dashboard'); // Navigate if validation passes
+    setIsLoading(true);
+    try {
+      console.log('Attempting signup...');
+      await signUp(email.value, password.value, username.value);
+      console.log('Signup successful');
+      Alert.alert('Success', 'Account created successfully');
+    } catch (error) {
+      console.error('Signup failed:', error.message);
+      Alert.alert('Error', error.message);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
