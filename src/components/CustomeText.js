@@ -8,7 +8,7 @@ export default function CustomeText({ children, style, textStyle, ...props }) {
 
   return (
     <View className="w-full justify-start pb-4">
-      <Text className="text-sm " style={{ color: colors.textColor, ...props }}>
+      <Text className="text-sm " style={{ color: colors.textColor }} {...props}>
         {children}
       </Text>
     </View>

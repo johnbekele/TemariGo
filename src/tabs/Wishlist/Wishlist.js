@@ -6,7 +6,7 @@ import CustomeText from '~/components/CustomeText';
 export default function Wishlist() {
   return (
     <UserBackground>
-      <CustomeText title="Wishlist" />
+      <CustomeText>This is wish list you funcking idiot </CustomeText>
     </UserBackground>
   );
 }
