@@ -3,12 +3,21 @@ import React, { Children, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ThemeContext } from '~/context/ThemeContext';
 
-export default function CustomeText({ children, style, textStyle, ...props }) {
+export default function CustomeText({
+  children,
+  className,
+  containerClass,
+  style,
+  textStyle,
+  ...props
+}) {
   const { colors } = useContext(ThemeContext); // Access theme colors
 
+  // the class name for the view is affected by props
+
   return (
-    <View className="w-full justify-start pb-4">
-      <Text className="text-sm " style={{ color: colors.textColor, ...props }}>
+    <View className={containerClass} {...props}>
+      <Text className={className} style={{ color: colors.textColor, ...props }}>
         {children}
       </Text>
     </View>

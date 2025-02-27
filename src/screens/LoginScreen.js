@@ -38,6 +38,7 @@ export default function LoginScreen({ navigation }) {
       Alert.alert('Success', 'Logged in successfully');
       navigation.navigate('Dashboard');
     } catch (error) {
+      // Handle login error out come for User in more dummy way
       console.error('Login failed:', error.message);
       let errorMessage = 'An error occurred. Please try again.';
       switch (error.code) {

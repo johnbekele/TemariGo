@@ -66,7 +66,7 @@ const UserHeader = ({
     <View
       style={[
         styles.header,
-        { backgroundColor: colors.backgroundColor, borderBottomColor: colors.borderColor },
+        { backgroundColor: colors.backgroundColor, shadowColor: colors.borderColor },
       ]}>
       {isLoading ? (
         <Text style={{ color: colors.textColor }}>Loading...</Text>
@@ -94,6 +94,7 @@ const UserHeader = ({
             className="text-base"
             style={{ color: colors.textColor }}
             title={email || 'No Email Provided'}
+            onPress={() => {}}
           />
         </View>
       </View>
@@ -109,7 +110,10 @@ const styles = StyleSheet.create({
   header: {
     padding: 15,
     alignItems: 'center',
-    borderBottomWidth: 1,
+    shadowOpacity: 0.2,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 5,
   },
   profileImage: {
     width: 100,

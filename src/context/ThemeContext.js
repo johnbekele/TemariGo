@@ -41,6 +41,7 @@ export const ThemeProvider = ({ children }) => {
       inactiveIcon: '#888888',
       UserLogo: '#000000',
       LogoText: '#ffffff',
+      imageColor: '#3C3D37',
     },
     dark: {
       backgroundColor: '#000000',
@@ -50,6 +51,7 @@ export const ThemeProvider = ({ children }) => {
       buttonText: '#AD49E1',
       activeIcon: '#ffffff',
       inactiveIcon: '#888888',
+      imageColor: '#F1F0E9',
     },
   };
 

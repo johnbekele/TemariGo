@@ -25,7 +25,9 @@ export default function Account({ route, navigation }) {
       <View style={{ flex: 1 }}>
         <UserHeader imageUrl={imageUrl} username={username} />
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText style={{}}>Video preferences</CustomeText>
+          <CustomeText containerClass="justify-start pb-4 w-full   " style={{}}>
+            Video preferences
+          </CustomeText>
           <FullButton onPress={() => navigation.push('DownloadOptions')} title="Download Options" />
           <FullButton
             onPress={() => navigation.push('VideoPlayBackHome')}
@@ -37,7 +39,9 @@ export default function Account({ route, navigation }) {
           />
         </View>
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText style={{}}>Account settings</CustomeText>
+          <CustomeText containerClass="justify-start pb-4 w-full   " style={{}}>
+            Account settings
+          </CustomeText>
           <FullButton
             onPress={() => navigation.push('OcupationInterestHome')}
             title="Ocupation and interest"
@@ -61,7 +65,9 @@ export default function Account({ route, navigation }) {
           <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Close account " />
         </View>
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText style={{ flex: 1 }}>Support </CustomeText>
+          <CustomeText containerClass="justify-start pb-4 w-full   " style={{ flex: 1 }}>
+            Support{' '}
+          </CustomeText>
           <FullButton
             onPress={() => navigation.push('AboutTemarigoHome')}
             title="About Temarigo "
