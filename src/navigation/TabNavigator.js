@@ -3,11 +3,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
-import Featured from '../tabs/Featured';
-import MyLearning from '../tabs/MyLearning';
-import Account from '../tabs/Account';
-import Search from '~/tabs/Search';
-import Wishlist from '~/tabs/Wishlist';
+
+import AccountStack from '~/tabs/Account/AccountStack';
+import Featured from '~/tabs/Featured/Featured';
+import MyLearning from '~/tabs/MyLearning/MyLearning';
+import Search from '~/tabs/Search/Search';
+import Wishlist from '~/tabs/Wishlist/Wishlist';
+
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ToggleButton from '../components/ToggleButton';
 import UserBackground from '../components/UserBackground';
@@ -71,13 +73,9 @@ export default function TabNavigator() {
         <Tab.Screen name="Wishlist" component={Wishlist} />
         <Tab.Screen
           name="Account"
-          component={Account}
+          component={AccountStack}
           options={{
-            headerRight: () => (
-              <View style={{ marginRight: 10 }}>
-                <ToggleButton />
-              </View>
-            ),
+            headerShown: false,
           }}
         />
       </Tab.Navigator>

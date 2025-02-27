@@ -47,7 +47,7 @@ export const ThemeProvider = ({ children }) => {
       textColor: '#ffffff',
       borderColor: '#ffffff',
       buttonBackground: '#4CAF50',
-      buttonText: '#ffffff',
+      buttonText: '#AD49E1',
       activeIcon: '#ffffff',
       inactiveIcon: '#888888',
     },
