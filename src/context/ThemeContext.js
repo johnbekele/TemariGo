@@ -1,6 +1,7 @@
 // context/ThemeContext.js
 import React, { createContext, useState, useEffect } from 'react';
 import { Appearance } from 'react-native';
+import UserLogo from '~/components/UserLogo';
 
 export const ThemeContext = createContext();
 
@@ -32,16 +33,23 @@ export const ThemeProvider = ({ children }) => {
     light: {
       backgroundColor: '#ffffff',
       textColor: '#000000',
-      borderColor: '#dddddd',
+      borderColor: '#000000',
       buttonBackground: '#007AFF',
-      buttonText: '#ffffff',
+      buttonText: '#4635B1',
+      shadowText: '#e7eaf6',
+      activeIcon: '#000000',
+      inactiveIcon: '#888888',
+      UserLogo: '#000000',
+      LogoText: '#ffffff',
     },
     dark: {
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#000000',
       textColor: '#ffffff',
-      borderColor: '#444444',
+      borderColor: '#ffffff',
       buttonBackground: '#4CAF50',
       buttonText: '#ffffff',
+      activeIcon: '#ffffff',
+      inactiveIcon: '#888888',
     },
   };
 

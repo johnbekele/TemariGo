@@ -5,7 +5,7 @@ import { Button, Icon } from '@rneui/themed';
 import UserBackground from '~/components/UserBackground';
 import ToggleButton from '~/components/ToggleButton';
 
-export default function Home() {
+export default function Featured() {
   return (
     <UserBackground>
       <View>

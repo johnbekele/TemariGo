@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 import { ThemeContext } from '~/context/ThemeContext';
 
 /**
@@ -12,14 +12,23 @@ export default function UserBackground({ children, style }) {
   const { colors } = useContext(ThemeContext);
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.backgroundColor }, style]}>
+    <ScrollView
+      style={{ backgroundColor: colors.backgroundColor, ...style }}
+      contentContainerStyle={styles.scrollView}>
       {children}
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    width: '100%',
+  },
   container: {
     flex: 1,
+  },
+  scrollView: {
+    flexGrow: 1,
   },
 });

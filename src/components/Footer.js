@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: 10,
-    borderTopWidth: 1,
+    borderTopopacity: 0.1,
+    elevation: 0,
     alignItems: 'center',
   },
 });

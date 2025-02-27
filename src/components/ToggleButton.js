@@ -14,14 +14,15 @@ export default function ToggleButton() {
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={[styles.toggleContainer, isActive ? styles.active : styles.inactive]}
+        style={[styles.toggleContainer, isActive ? styles.inactive : styles.active]}
         onPress={toggleTheme} // Directly use toggleTheme from context
       >
         <View style={[styles.thumb, isActive ? styles.thumbActive : styles.thumbInactive]}>
           {isActive ? (
-            <Text style={styles.icon}>🌞</Text> // Light mode
+            <Text style={styles.icon}>🌜</Text> // Light mode
           ) : (
-            <Text style={styles.icon}>🌜</Text> // Dark mode
+            <Text style={styles.icon}>🌞</Text>
+            // Dark mode
           )}
         </View>
       </TouchableOpacity>
