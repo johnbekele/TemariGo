@@ -7,7 +7,7 @@ export default function UserLogo({ initial }) {
   return (
     <View className=" flex-1 items-center justify-center rounded-full *:text-center">
       <Text style={{ color: colors.LogoText }} className=" text-7xl">
-        {initial}
+        {initial || 'Hi'}
       </Text>
     </View>
   );

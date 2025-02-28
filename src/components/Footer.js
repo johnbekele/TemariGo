@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    padding: 10,
+    padding: 2,
     borderTopopacity: 0.1,
     elevation: 0,
     alignItems: 'center',

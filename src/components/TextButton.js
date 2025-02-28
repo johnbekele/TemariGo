@@ -5,7 +5,7 @@ export default function TextButton({ title, ...props }) {
   return (
     <View>
       <TouchableOpacity {...props}>
-        <Text {...props}>{title}</Text>
+        <Text {...props}>{title || 'Loading...'}</Text>
       </TouchableOpacity>
     </View>
   );

@@ -1,5 +1,5 @@
 import { View, Text, Button } from 'react-native';
-import React from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Background from '~/components/Background';
 import HeadingText from '~/components/HeadingText';
 import UserHeader from '~/components/UserHeader';
@@ -8,8 +8,11 @@ import Footer from '~/components/Footer';
 import UserBackground from '~/components/UserBackground';
 import FullButton from '~/components/FullButton';
 import CustomeText from '~/components/CustomeText';
+import { ThemeContext } from '~/context/ThemeContext';
+import TextButton from '~/components/TextButton';
 
 export default function Account({ route, navigation }) {
+  const { colors } = useContext(ThemeContext);
   const { imageUrl, username } = route.params || {};
   const { logout } = useAuth();
 
@@ -22,10 +25,10 @@ export default function Account({ route, navigation }) {
   };
   return (
     <UserBackground>
-      <View style={{ flex: 1 }}>
+      <View>
         <UserHeader imageUrl={imageUrl} username={username} />
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText containerClass="justify-start pb-4 w-full   " style={{}}>
+          <CustomeText containerClass="justify-start pb-6 w-full   " className="text-sm">
             Video preferences
           </CustomeText>
           <FullButton onPress={() => navigation.push('DownloadOptions')} title="Download Options" />
@@ -39,7 +42,7 @@ export default function Account({ route, navigation }) {
           />
         </View>
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText containerClass="justify-start pb-4 w-full   " style={{}}>
+          <CustomeText containerClass="justify-start pb-6 w-full   " className="text-sm">
             Account settings
           </CustomeText>
           <FullButton
@@ -65,7 +68,7 @@ export default function Account({ route, navigation }) {
           <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Close account " />
         </View>
         <View style={{ flex: 1, padding: 20, alignItems: 'center' }}>
-          <CustomeText containerClass="justify-start pb-4 w-full   " style={{ flex: 1 }}>
+          <CustomeText containerClass="justify-start pb-6 w-full   " style={{ flex: 1 }}>
             Support{' '}
           </CustomeText>
           <FullButton
@@ -89,14 +92,19 @@ export default function Account({ route, navigation }) {
             title="Share Temarigo app"
           />
         </View>
+        <View className="flex-column items-center justify-center pb-10">
+          <TextButton
+            className="text-xl font-semibold"
+            style={{ color: colors.buttonText }}
+            title="Sign out"
+            onPress={handleSignOut}
+          />
+
+          <Text className="text-sans-serif pt-2 *:text-base" style={{ color: colors.textColor }}>
+            Temarigo V1.0.0{' '}
+          </Text>
+        </View>
       </View>
-      <Footer>
-        <Button
-          onPress={() => navigation.push('AccountSecurityHome')}
-          title="Sign Out"
-          onPress={handleSignOut}
-        />
-      </Footer>
     </UserBackground>
   );
 }

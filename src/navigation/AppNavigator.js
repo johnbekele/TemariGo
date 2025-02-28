@@ -30,6 +30,7 @@ export default function AppNavigator() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     console.log('FIREBASE_AUTH in AppNavigator:', FIREBASE_AUTH);
@@ -73,7 +74,7 @@ export default function AppNavigator() {
 
   return (
     <ThemeProvider>
-      {isAuthenticated ? <MainStack userData={userData} /> : <AuthStack />}
+      {isAuthenticated || isAdmin ? <MainStack userData={userData} /> : <AuthStack />}
     </ThemeProvider>
   );
 }
