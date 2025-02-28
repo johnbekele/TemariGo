@@ -10,36 +10,36 @@ export default function Wishlist({ navigation }) {
     <UserBackground>
       <ImageHeader />
       <View className="mt-6">
-        <FullButton onPress={() => navigation.push('OcupationInterestHome')} title="Development" />
+        <FullButton onPress={() => navigation.push('Development')} title="Development" />
         <FullButton
-          onPress={() => navigation.push('PushNotificationHome')}
+          onPress={() => navigation.push('ITSoftwareDevelopment')}
           title="IT & Software Development"
         />
-        <FullButton onPress={() => navigation.push('LearningRemindersHome')} title="Business" />
+        <FullButton onPress={() => navigation.push('Business')} title="Business" />
         <FullButton
-          onPress={() => navigation.push('EmailNotificationHome')}
-          title="Finance & Accounting "
+          onPress={() => navigation.push('FinanceAccounting')}
+          title="Finance & Accounting"
         />
         <FullButton
-          onPress={() => navigation.push('AccountSecurityHome')}
+          onPress={() => navigation.push('OfficeProductivity')}
           title="Office Productivity"
         />
         <FullButton
-          onPress={() => navigation.push('CloseAccountHome')}
+          onPress={() => navigation.push('PersonalDevelopment')}
           title="Personal Development"
         />
-        <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Design" />
-        <FullButton onPress={() => navigation.push('CloseAccountHome')} title=" Marketing " />
-        <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Lifestyle " />
+        <FullButton onPress={() => navigation.push('Design')} title="Design" />
+        <FullButton onPress={() => navigation.push('Marketing')} title="Marketing" />
+        <FullButton onPress={() => navigation.push('Lifestyle')} title="Lifestyle" />
         <FullButton
-          onPress={() => navigation.push('CloseAccountHome')}
-          title="Phototgraphy & Video"
+          onPress={() => navigation.push('PhotographyVideo')}
+          title="Photography & Video"
         />
-        <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Health & Fitness" />
-        <FullButton onPress={() => navigation.push('CloseAccountHome')} title="Music" />
+        <FullButton onPress={() => navigation.push('HealthFitness')} title="Health & Fitness" />
+        <FullButton onPress={() => navigation.push('Music')} title="Music" />
         <FullButton
-          onPress={() => navigation.push('CloseAccountHome')}
-          title="teaching & Academics"
+          onPress={() => navigation.push('TeachingAcademics')}
+          title="Teaching & Academics"
         />
       </View>
     </UserBackground>

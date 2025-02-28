@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     height: 20,
     borderRadius: 15,
     padding: 1,
-    backgroundColor: '#e0e0e0',
+    // backgroundColor: '#e0e0e0',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
   active: {
-    backgroundColor: '#9ee3fb', // Light mode
+    // backgroundColor: '#9ee3fb', // Light mode
   },
   inactive: {
     backgroundColor: '#3c4145', // Dark mode
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     position: 'absolute',
     top: 2,
   },

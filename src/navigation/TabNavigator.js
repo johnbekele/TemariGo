@@ -6,12 +6,12 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import AccountStack from '~/tabs/Account/AccountStack';
 import Featured from '~/tabs/Featured/Featured';
-import MyLearning from '~/tabs/MyLearning/MyLearning';
+import MyLearningStack from '~/tabs/MyLearning/MyLearningStack';
 import Search from '~/tabs/Search/Search';
-import Wishlist from '~/tabs/Wishlist/Wishlist';
+import WishlistStack from '~/tabs/Wishlist/WishlistStack';
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import ToggleButton from '../components/ToggleButton';
+import ToggleButton from '../components/ThemToggle';
 import UserBackground from '../components/UserBackground';
 
 import { ThemeContext } from '~/context/ThemeContext';
@@ -69,8 +69,14 @@ export default function TabNavigator() {
         })}>
         <Tab.Screen name="Featured" component={Featured} />
         <Tab.Screen name="Search" component={Search} />
-        <Tab.Screen name="My learning" component={MyLearning} />
-        <Tab.Screen name="Wishlist" component={Wishlist} />
+        <Tab.Screen name="My learning" component={MyLearningStack} />
+        <Tab.Screen
+          name="Wishlist"
+          options={{
+            headerShown: false,
+          }}
+          component={WishlistStack}
+        />
         <Tab.Screen
           name="Account"
           component={AccountStack}

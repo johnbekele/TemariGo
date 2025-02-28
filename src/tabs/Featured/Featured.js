@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from '@rneui/themed';
 import { Button, Icon } from '@rneui/themed';
 import UserBackground from '~/components/UserBackground';
-import ToggleButton from '~/components/ToggleButton';
+import ToggleButton from '~/components/ThemToggle';
 
 export default function Featured() {
   return (
