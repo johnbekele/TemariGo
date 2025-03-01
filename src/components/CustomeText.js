@@ -17,7 +17,7 @@ export default function CustomeText({
 
   return (
     <View className={containerClass} {...props}>
-      <Text className={className} style={{ color: colors.textColor, ...props }}>
+      <Text className={className} style={{ color: colors.textColor, style, ...props }}>
         {children}
       </Text>
     </View>
